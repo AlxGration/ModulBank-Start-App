@@ -36,7 +36,7 @@ namespace WorkWithDatabase.Postgre
                               id SERIAL PRIMARY KEY,
                               user_id INT NOT NULL REFERENCES users (id) 
                               ON DELETE SET NULL,
-                              number INT NOT NULL UNIQUE,
+                              number BIGINT NOT NULL UNIQUE,
                               amount MONEY NOT NULL,
                               status INT NOT NULL
                             );
@@ -106,7 +106,7 @@ namespace WorkWithDatabase.Postgre
                 conn.Execute("INSERT INTO accounts (user_id, number, amount, status) VALUES(@user_id, @number, @amount, @status);",
                     new
                     {
-                        user_id = account.UserID,
+                        user_id = account.User_id,
                         number = account.Number,
                         amount = account.Amount,
                         status = account.Status
@@ -120,11 +120,11 @@ namespace WorkWithDatabase.Postgre
             {
                 conn.Open();
 
-                conn.Execute("UPDATE users SET user_id = @user_id, number = @number, amount = @amount, status = @status WHERE id = @id;",
+                conn.Execute("UPDATE accounts SET user_id = @user_id, number = @number, amount = @amount, status = @status WHERE id = @id;",
                      new
                      {
                          id = account.ID,
-                         user_id = account.UserID,
+                         user_id = account.User_id,
                          number = account.Number,
                          amount = account.Amount,
                          status = account.Status
@@ -142,6 +142,22 @@ namespace WorkWithDatabase.Postgre
                     new
                     {
                         email,
+                    });
+
+                return result;
+            }
+        }
+
+        public AccountModel GetAccountByNumber(long number)
+        {
+            using (var conn = CreateConnection())
+            {
+                conn.Open();//id, user_id, number, amount, status
+
+                var result = conn.QuerySingleOrDefault<AccountModel>("SELECT * FROM accounts WHERE number = @number;",
+                    new
+                    {
+                        number,
                     });
 
                 return result;

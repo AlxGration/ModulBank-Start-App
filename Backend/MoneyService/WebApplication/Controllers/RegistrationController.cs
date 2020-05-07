@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
         public IActionResult Get([FromBody] UserCredentialsReg user)
         {
             if (user.Username == null || user.Email == null || user.Password == null) return Unauthorized(new { message = "Some arguments are missed" });
-            if (user.Username.Length > 2 && user.Password.Length > 5) return Unauthorized(new { message = "Incorrect arguments" });
+            if (user.Username.Length < 3 || user.Password.Length < 6) return Unauthorized(new { message = "Incorrect arguments" });
             // если Email не занят и по формату
             if (_service.IsValidEmail(user.Email))
             {

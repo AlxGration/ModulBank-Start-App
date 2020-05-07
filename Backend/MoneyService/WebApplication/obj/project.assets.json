@@ -6930,11 +6930,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WebApplication\\WebApplication.csproj",
+      "projectUniqueName": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WebApplication\\WebApplication.csproj",
       "projectName": "WebApplication",
-      "projectPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WebApplication\\WebApplication.csproj",
+      "projectPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WebApplication\\WebApplication.csproj",
       "packagesPath": "C:\\Users\\alexg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WebApplication\\obj\\",
+      "outputPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6953,11 +6953,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\alexg\\source\\repos\\MoneyService\\Auth\\Auth.csproj": {
-              "projectPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\Auth\\Auth.csproj"
+            "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\Auth\\Auth.csproj": {
+              "projectPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\Auth\\Auth.csproj"
             },
-            "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj": {
-              "projectPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj"
+            "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj": {
+              "projectPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj"
             }
           }
         }

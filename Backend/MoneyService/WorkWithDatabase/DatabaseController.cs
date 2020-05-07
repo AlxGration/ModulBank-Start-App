@@ -12,9 +12,10 @@ namespace WorkWithDatabase
         //void UpdateUser(UserModel user);
         //void DeleteUser(int id);
         void AddAccount(AccountModel account);
+        AccountModel GetAccountByNumber(long number);
         void UpdateAccount(AccountModel account);
-        //void MakeDeposit(AccountModel account, int money);
-       // void MakeWithDrawal(int money);
+        //void MakeDeposit(ulong number, decimal amount);
+       
 
     }
     public class DatabaseController : IDatabaseService
@@ -48,9 +49,15 @@ namespace WorkWithDatabase
             return _db.GetUserByEmail(email);
         }
 
+        public AccountModel GetAccountByNumber(long number)
+        {
+            return _db.GetAccountByNumber(number);
+        }
+
         public void UpdateAccount(AccountModel account)
         {
             _db.UpdateAccount(account);
         }
+
     }
 }

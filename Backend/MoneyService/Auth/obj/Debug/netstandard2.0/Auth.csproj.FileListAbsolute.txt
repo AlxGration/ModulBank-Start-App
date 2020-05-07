@@ -10,3 +10,15 @@ C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.pdb
 C:\Users\alexg\source\repos\MoneyService\Auth\bin\Debug\netstandard2.0\WorkWithDatabase.dll
 C:\Users\alexg\source\repos\MoneyService\Auth\bin\Debug\netstandard2.0\WorkWithDatabase.pdb
 C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.csproj.CopyComplete
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\bin\Debug\netstandard2.0\Auth.deps.json
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\bin\Debug\netstandard2.0\Auth.dll
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\bin\Debug\netstandard2.0\Auth.pdb
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\bin\Debug\netstandard2.0\WorkWithDatabase.dll
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\bin\Debug\netstandard2.0\WorkWithDatabase.pdb
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.csprojAssemblyReference.cache
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.csproj.CoreCompileInputs.cache
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.AssemblyInfoInputs.cache
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.AssemblyInfo.cs
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.csproj.CopyComplete
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.dll
+D:\LocalGit\GitHub\ModuleBank Start App\Backend\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.pdb

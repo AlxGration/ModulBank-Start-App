@@ -16,7 +16,7 @@ using WebApplication.DTO;
 namespace WebApplication.Controllers
 {
     [ApiController]
-    [Route("api/token")]
+    [Route("api/login")]
     public class TokenController : ControllerBase
     {
         private IUserService _service;
@@ -31,7 +31,7 @@ namespace WebApplication.Controllers
         [HttpPost]
         public IActionResult Get([FromBody] UserCredentials user)
         {
-            if (user.Password == null || user.Email == null) return Unauthorized(new { message="Bad arguments"});
+            if (user.Password == null || user.Email == null) return Unauthorized(new { message="Some arguments are missed" });
 
             if (_service.IsValidUser(user.Email, user.Password)) { // если пользователь есть в БД, то даем ему токен
                 var authClaims = new[] {
@@ -55,7 +55,7 @@ namespace WebApplication.Controllers
                     expiration = token.ValidTo
                 });
             }
-            return Unauthorized();
+            return Unauthorized(new { message = "Email or password is incorrect" });
         }
         
     }

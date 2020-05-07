@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1Fc5F41aYufZ+XMwyKlhQKmKybSGPT4EO/T/IuGlIZ00CDfaq+CBnPS9TbwrHqtdZF3e6a3goZYiXzTmtCtfHA==",
+  "dgSpecHash": "B1P2hEc5JWq78oL/bkF9FYH/AveaDwX+/MllvdLgEpU6VhiTg0rSs1pa10b89ZdWZRh9Ub/i2sjoCFzuBrHuGQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\Auth\\Auth.csproj",
+  "projectFilePath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\Auth\\Auth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexg\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\alexg\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",

@@ -762,11 +762,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj",
+      "projectUniqueName": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj",
       "projectName": "WorkWithDatabase",
-      "projectPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj",
+      "projectPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj",
       "packagesPath": "C:\\Users\\alexg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\obj\\",
+      "outputPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

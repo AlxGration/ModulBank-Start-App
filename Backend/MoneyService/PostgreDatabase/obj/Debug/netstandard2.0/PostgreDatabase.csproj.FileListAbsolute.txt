@@ -1,0 +1,5 @@
+C:\Users\alexg\source\repos\MoneyService\PostgreDatabase\bin\Debug\netstandard2.0\PostgreDatabase.deps.json
+C:\Users\alexg\source\repos\MoneyService\PostgreDatabase\bin\Debug\netstandard2.0\PostgreDatabase.dll
+C:\Users\alexg\source\repos\MoneyService\PostgreDatabase\obj\Debug\netstandard2.0\PostgreDatabase.csprojAssemblyReference.cache
+C:\Users\alexg\source\repos\MoneyService\PostgreDatabase\obj\Debug\netstandard2.0\PostgreDatabase.AssemblyInfoInputs.cache
+C:\Users\alexg\source\repos\MoneyService\PostgreDatabase\obj\Debug\netstandard2.0\PostgreDatabase.AssemblyInfo.cs

@@ -1,0 +1,9 @@
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\bin\Debug\netstandard2.0\WorkWithDatabase.deps.json
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\bin\Debug\netstandard2.0\WorkWithDatabase.dll
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\obj\Debug\netstandard2.0\WorkWithDatabase.csprojAssemblyReference.cache
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\obj\Debug\netstandard2.0\WorkWithDatabase.AssemblyInfoInputs.cache
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\obj\Debug\netstandard2.0\WorkWithDatabase.AssemblyInfo.cs
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\obj\Debug\netstandard2.0\WorkWithDatabase.csproj.CoreCompileInputs.cache
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\bin\Debug\netstandard2.0\WorkWithDatabase.pdb
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\obj\Debug\netstandard2.0\WorkWithDatabase.dll
+C:\Users\alexg\source\repos\MoneyService\WorkWithDatabase\obj\Debug\netstandard2.0\WorkWithDatabase.pdb

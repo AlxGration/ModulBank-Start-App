@@ -1,0 +1,12 @@
+C:\Users\alexg\source\repos\MoneyService\Auth\bin\Debug\netstandard2.0\Auth.deps.json
+C:\Users\alexg\source\repos\MoneyService\Auth\bin\Debug\netstandard2.0\Auth.dll
+C:\Users\alexg\source\repos\MoneyService\Auth\bin\Debug\netstandard2.0\Auth.pdb
+C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.csprojAssemblyReference.cache
+C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.csproj.CoreCompileInputs.cache
+C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.AssemblyInfoInputs.cache
+C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.AssemblyInfo.cs
+C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.dll
+C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.pdb
+C:\Users\alexg\source\repos\MoneyService\Auth\bin\Debug\netstandard2.0\WorkWithDatabase.dll
+C:\Users\alexg\source\repos\MoneyService\Auth\bin\Debug\netstandard2.0\WorkWithDatabase.pdb
+C:\Users\alexg\source\repos\MoneyService\Auth\obj\Debug\netstandard2.0\Auth.csproj.CopyComplete

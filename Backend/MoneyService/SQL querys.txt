@@ -1,0 +1,47 @@
+Создание двух таблиц
+
+	CREATE TABLE IF NOT EXISTS users (
+		id SERIAL PRIMARY KEY,
+		username TEXT NOT NULL,
+		email TEXT NOT NULL,
+		password TEXT NOT null,
+		salt TEXT NOT NULL,
+		status INT NOT NULL
+	);
+	CREATE TABLE IF NOT EXISTS accounts (
+		id SERIAL PRIMARY KEY,
+		user_id INT NOT NULL REFERENCES users (id) 
+		ON DELETE SET NULL,
+		number BIGINT NOT NULL UNIQUE,
+		amount MONEY NOT NULL,
+		status INT NOT NULL
+	);
+_____________________________________________
+Удаление таблиц
+
+	DROP TABLE IF EXISTS accounts; 
+	DROP TABLE IF EXISTS users;
+_____________________________________________
+Добавление пользователя
+
+	INSERT INTO users (username, email, password, salt, status) VALUES(@username, @email, @password, @salt, @status);
+_____________________________________________
+Нахождение записи пользователя по его id
+
+	SELECT id, username, email, password, salt, status FROM users WHERE id = @id;
+_____________________________________________
+Нахождение записи пользователя по его логину(email)
+	
+	SELECT id, username, email, password, salt, status FROM users WHERE email = @email;
+_____________________________________________
+Добавление счета
+
+	INSERT INTO accounts (user_id, number, amount, status) VALUES(@user_id, @number, @amount, @status);
+_____________________________________________
+Обновление счета
+
+	UPDATE accounts SET user_id = @user_id, number = @number, amount = @amount, status = @status WHERE id = @id;
+_____________________________________________
+Нахождение записи счета по его номеру
+
+	SELECT * FROM accounts WHERE number = @number;

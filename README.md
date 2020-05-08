@@ -96,8 +96,8 @@
 	Обязательные параметры запроса:
 		
 		Bearer Token
-		- NumberFrom: long		| счет отправителя
-		- NumberTo:   long 		| счет получателя
+		- NumberFrom: long	| счет отправителя
+		- NumberTo:   long 	| счет получателя
 		- Amount:     decimal	| сумма
 	Пример запроса:
 

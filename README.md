@@ -16,12 +16,17 @@
 # Текущее API
 
 [Регистрация](#registration)
+
 [Аутентификация](#login)
 
+
 [Открыть новый счет](#newaccount)
+
 [Список счетов](#accounts)
 
+
 [Пополнение_счета](#makedepo)
+
 [Перевод между счетами](#maketransfer)
 
 
@@ -59,16 +64,16 @@
 		- password: string
 	Пример запроса:
 
-			{
-				"Email":"alex@mail.ru",
-				"Password":"1243456"
-			}
+		{
+			"Email":"alex@mail.ru",
+			"Password":"1243456"
+		}
 	Ответ:
 
-			{
-				"token": "eyJhbGci...",
-				"expiration": "2020-05-07T02:04:41Z"
-			}
+		{
+			"token": "eyJhbGci...",
+			"expiration": "2020-05-07T02:04:41Z"
+		}
 		http 200 ОК
 	Возможные ответы:
 
@@ -84,10 +89,10 @@
 		- Amount:   decimal	| сумма
 	Пример запроса:
 
-			{
-				"NumberTo":4000000000,
-				"Amount":1000.60
-			}
+		{
+			"NumberTo":4000000000,
+			"Amount":1000.60
+		}
 	Ответ:
 			
 		http 200 ОК
@@ -110,11 +115,11 @@
 		- Amount:     decimal	| сумма
 	Пример запроса:
 
-			{
-				"NumberFrom":4000000001,
-				"NumberTo":4000000000,
-				"Amount":1000.60
-			}
+		{
+			"NumberFrom":4000000001,
+			"NumberTo":4000000000,
+			"Amount":1000.60
+		}
 	Ответ:
 	
 		http 200 ОК

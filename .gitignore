@@ -31,7 +31,6 @@ yarn-error.log*
 *.csproj
 *.user
 *.userosscache
-*.sln.docstates
 
 
 # Visual Studio profiler

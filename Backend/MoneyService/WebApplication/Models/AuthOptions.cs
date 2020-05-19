@@ -14,7 +14,7 @@ namespace WebApplication.Models
 
         public string Audience { get; set; }
 
-        public int ExpiresInMenutes { get; set; }
+        public int ExpiresInHours { get; set; }
 
     }
 }

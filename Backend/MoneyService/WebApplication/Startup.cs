@@ -38,7 +38,9 @@ namespace WebApplication
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IDbService, PostgreDbService>();
             services.AddTransient<IBankOperationService, BankOperationService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddScoped<AuthUserRequestHandler>();
+            services.AddScoped<UserRequestHandler>();
             services.AddScoped<BankOperationRequestHandler>();
 
             services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));

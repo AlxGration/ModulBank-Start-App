@@ -10,13 +10,11 @@ namespace WorkWithDatabase.Services.Inerfaces
         void AddUser(UserModel user);
         UserModel GetUser(Guid id);
         UserModel GetUserByEmail(string email);
-        //void UpdateUser(UserModel user);
-        //void DeleteUser(int id);
+        void UpdateUser(UserModel user);
         void AddAccount(AccountModel account);
+        AccountModel GetAccount(Guid id);
         AccountModel GetAccountByNumber(long number);
+        List<AccountModel> GetAccountsByUserId(Guid userId);
         void UpdateAccount(AccountModel account);
-        //void MakeDeposit(ulong number, decimal amount);
-
-
     }
 }

@@ -17,7 +17,7 @@ namespace WorkWithDatabase.Models
 
         public UserModel(Guid id, string username, string email, string password, string salt, UserStatus status)
         {
-            ID = id;
+            Id = id;
             Username = username;
             Email = email;
             Password = password;
@@ -25,7 +25,7 @@ namespace WorkWithDatabase.Models
             Status = status;
         }
 
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplication.DTO;
 using WebApplication.BusinessLogic;
 using WebApplication.Models;
+using Newtonsoft.Json.Linq;
 
 namespace WebApplication.Controllers
 {
     [ApiController]
-    
+
     public class AuthController : ControllerBase
     {
         private AuthUserRequestHandler _service;
@@ -24,23 +25,26 @@ namespace WebApplication.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] UserCredentials user)
         {
-            Ttoken token = _service.LoginRequest(user);
-            if (token != null)
+            JObject json = (JObject)JToken.FromObject(_service.LoginRequest(user));
+            if (json.ContainsKey("errorMessage"))
             {
-                return Ok(token);
+                return BadRequest(json.ToObject<MessageError>());
             }
-            return BadRequest("Invalid email or password");
+            return Ok(json.ToObject<Ttoken>());
+
         }
 
         [Route("api/registration")]
         [HttpPost]
         public IActionResult Register([FromBody] UserCredentialsReg user)
         {
-            if (_service.RegisterRequest(user))
+            JObject json = (JObject)JToken.FromObject(_service.RegisterRequest(user));
+            if (json.ContainsKey("errorMessage"))
             {
-                return Ok();
+                return BadRequest(json.ToObject<MessageError>());
             }
-            return BadRequest("Email is incorrect or already registered");
+            return Ok();
+            
         }
 
     }

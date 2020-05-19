@@ -57,7 +57,7 @@ namespace WebApplication.Services
             var token = new JwtSecurityToken(
                 issuer: _authOptions.Issuer,
                 audience: _authOptions.Audience,
-                expires: DateTime.Now.AddMinutes(_authOptions.ExpiresInMenutes),
+                expires: DateTime.Now.AddHours(_authOptions.ExpiresInHours),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(
                     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authOptions.SecureKey)),
@@ -66,7 +66,7 @@ namespace WebApplication.Services
             );
 
             return new Ttoken(
-                _dbService.GetUserByEmail(user.Email).ID,
+                _dbService.GetUserByEmail(user.Email).Id,
                 new JwtSecurityTokenHandler().WriteToken(token),
                 token.ValidTo.ToString()
             );

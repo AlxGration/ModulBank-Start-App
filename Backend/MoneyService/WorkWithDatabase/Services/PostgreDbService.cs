@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Dapper;
 using Npgsql;
 using WorkWithDatabase.Models;
@@ -35,14 +37,14 @@ namespace WorkWithDatabase.Services
                               status INT NOT NULL
                             );
                             CREATE TABLE IF NOT EXISTS accounts (
-                              id SERIAL PRIMARY KEY,
+                              id uuid PRIMARY KEY UNIQUE,
                               user_id uuid NOT NULL REFERENCES users (id) 
                               ON DELETE SET NULL,
                               number BIGINT NOT NULL UNIQUE,
                               amount MONEY NOT NULL,
                               status INT NOT NULL
-                            );
-");
+                            );"
+                );
             }
         }
 
@@ -74,13 +76,13 @@ namespace WorkWithDatabase.Services
                 conn.Execute("INSERT INTO users (id, username, email, password, salt, status) VALUES(@id, @username, @email, @password, @salt, @status);",
                     new
                     {
-                        id = user.ID,
+                        id = user.Id,
                         username = user.Username,
                         email = user.Email,
                         password = user.Password,
                         salt = user.Salt,
                         status = user.Status
-                    }); ;
+                    }); 
             }
         }
 
@@ -106,14 +108,15 @@ namespace WorkWithDatabase.Services
             {
                 conn.Open();
 
-                conn.Execute("INSERT INTO accounts (user_id, number, amount, status) VALUES(@user_id, @number, @amount, @status);",
+                conn.Execute("INSERT INTO accounts (id, user_id, number, amount, status) VALUES(@id, @user_id, @number, @amount, @status);",
                     new
                     {
+                        id = account.Id,
                         user_id = account.User_id,
                         number = account.Number,
                         amount = account.Amount,
                         status = account.Status
-                    }); ;
+                    }); 
             }
         }
 
@@ -126,12 +129,12 @@ namespace WorkWithDatabase.Services
                 conn.Execute("UPDATE accounts SET user_id = @user_id, number = @number, amount = @amount, status = @status WHERE id = @id;",
                      new
                      {
-                         id = account.ID,
+                         id = account.Id,
                          user_id = account.User_id,
                          number = account.Number,
                          amount = account.Amount,
                          status = account.Status
-                     }); ;
+                     });
             }
         }
 
@@ -167,37 +170,56 @@ namespace WorkWithDatabase.Services
             }
         }
 
-        /*
-public void UpdateUser(UserModel user)
-{
-  using (var conn = CreateConnection())
-  {
-      conn.Open();
-
-      conn.Execute("UPDATE users SET username = @username, password = @password, salt = @salt WHERE id = @id;",
-          new
+        
+        public void UpdateUser(UserModel user)
+        {
+          using (var conn = CreateConnection())
           {
-              id = user.ID,
-              username = user.Username,
-              password = user.Password,
-              salt = user.Salt,
-          });
-  }
-}
+              conn.Open();
 
-public void DeleteUser(int id)
-{
-  using (var conn = CreateConnection())
-  {
-      conn.Open();
+              conn.Execute("UPDATE users SET username = @username, email = @email, password = @password, salt = @salt, status = status WHERE id = @id;",
+                  new
+                  {
+                      id = user.Id,
+                      username = user.Username,
+                      email = user.Email,
+                      password = user.Password,
+                      salt = user.Salt,
+                      status = user.Status
+                  });
+          }
+    }
 
-      conn.Execute("DELETE FROM users WHERE id = @id;",
-          new
-          {
-              id = id,
-          });
-  }
-}
-*/
+        public List<AccountModel> GetAccountsByUserId(Guid userId)
+        {
+            using (var conn = CreateConnection())
+            {
+                conn.Open();
+
+                var result = conn.Query<AccountModel>("SELECT id, user_id, number, amount, status FROM accounts WHERE user_id = @id AND status = 0;",
+                    new
+                    {
+                        id = userId,
+                    });
+
+                return result.ToList();
+            }
+        }
+
+        public AccountModel GetAccount(Guid id)
+        {
+            using (var conn = CreateConnection())
+            {
+                conn.Open();
+
+                var result = conn.QuerySingleOrDefault<AccountModel>("SELECT id, user_id, number, amount, status FROM accounts WHERE id = @id;",
+                    new
+                    {
+                        id,
+                    });
+
+                return result;
+            }
+        }
     }
 }

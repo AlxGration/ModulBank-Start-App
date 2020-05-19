@@ -7,6 +7,7 @@ namespace WorkWithDatabase.Models
     public enum UserStatus
     {
         VERIFIED,
-        UNVERIFIED
+        UNVERIFIED,
+        DELETED
     }
 }

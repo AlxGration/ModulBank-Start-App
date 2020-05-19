@@ -17,21 +17,22 @@ namespace WebApplication.BusinessLogic
             _authService = authService;
         }
 
-        public Ttoken LoginRequest(UserCredentials user)
+        public Object LoginRequest(UserCredentials user)
         {
-            if (user.Password == null || user.Email == null) throw new ArgumentException("Some arguments are missed");
+            if (user.Password == null || user.Email == null) return new MessageError("Some arguments are missed");
             if (_authService.IsValidUser(user.Email, user.Password))
             { // если пользователь есть в БД, то даем ему токен
                 return _authService.Token(user);
             }
-            throw new Exception("Email or password is incorrect");
+
+            return new MessageError("Email or password is incorrect");
         }
 
-        public bool RegisterRequest(UserCredentialsReg user)
+        public Object RegisterRequest(UserCredentialsReg user)
         {
-            if (user.Username == null || user.Email == null || user.Password == null) throw new ArgumentException("Some arguments are missed");
-            if (user.Username.Length < 3 || user.Password.Length < 6) throw new ArgumentException( "Incorrect arguments" );
-            if ( ! IsValidEmail(user.Email)) throw new ArgumentException("Incorrect email");
+            if (user.Username == null || user.Email == null || user.Password == null) return new MessageError("Some arguments are missed" );
+            if (user.Username.Length < 3 || user.Password.Length < 6) return new MessageError("Incorrect arguments");
+            if ( ! IsValidEmail(user.Email)) return new MessageError("Incorrect email" );
             // если Email не занят
             if ( ! _authService.IsEmailRegistered(user.Email))
             {
@@ -44,15 +45,14 @@ namespace WebApplication.BusinessLogic
                 // подключение к БД и запрос на добавление
                 _authService.RegisterUser(id, user.Username, user.Email, user.Password);
 
-                return true;
+                return new { result = true};
             }
-            return false;
+            return new MessageError("Email is incorrect or already registered" );
         }
         public bool IsValidEmail(string email)
         {
-            try
+            try  // валидация на email pattern
             {
-                // валидация на email pattern
                 MailAddress mail = new MailAddress(email);
             }
             catch (Exception e)

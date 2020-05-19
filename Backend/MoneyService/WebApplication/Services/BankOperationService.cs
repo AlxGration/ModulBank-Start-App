@@ -29,7 +29,7 @@ namespace WebApplication.Services
         {
             // checking accaount access for userId
             AccountModel account = _dbService.GetAccountByNumber(number);
-            return account.User_id.Equals(userId);
+            return account != null && account.User_id.Equals(userId);
         }
 
         public bool IsAccountOpen(long number)

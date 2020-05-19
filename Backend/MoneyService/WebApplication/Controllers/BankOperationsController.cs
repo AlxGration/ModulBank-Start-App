@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using WebApplication.DTO;
 using WebApplication.BusinessLogic;
+using Newtonsoft.Json.Linq;
 
 namespace WebApplication.Controllers
 {
@@ -14,7 +15,7 @@ namespace WebApplication.Controllers
     [ApiController]
     public class BankOperationsController : ControllerBase
     {
-        private const string V = "ID";
+
         private BankOperationRequestHandler _bankOperation;
 
         public BankOperationsController(BankOperationRequestHandler bankOperation)
@@ -27,10 +28,14 @@ namespace WebApplication.Controllers
         public IActionResult MakeDeposit([FromBody]Transaction transaction)
         {
             // положить на счет
-            if (_bankOperation.MakeDeposit(transaction)) {                 
-                return Ok();
-            }
-            return BadRequest( "Invalid bank account or amount" );
+
+            JObject json = (JObject)JToken.FromObject(_bankOperation.MakeDeposit(transaction));
+            if (json.ContainsKey("errorMessage"))
+            {
+                return BadRequest(json.ToObject<MessageError>());
+            }               
+            return Ok();
+          
         }
 
 
@@ -41,17 +46,19 @@ namespace WebApplication.Controllers
             var headers = Request.Headers;
             Microsoft.Extensions.Primitives.StringValues userId;
             if (headers.ContainsKey("ID")){
-                headers.TryGetValue(V, out userId);
+                headers.TryGetValue("ID", out userId);
             }
             else
             {
-                Unauthorized();// no user ID in query
+                Unauthorized(new MessageError("No user ID in header"));
             }
 
-            if (_bankOperation.MakeTransfer(new Guid(userId), transaction)){
-                return Ok();
+            JObject json = (JObject)JToken.FromObject(_bankOperation.MakeTransfer(new Guid(userId), transaction));
+            if (json.ContainsKey("errorMessage"))
+            {
+                return BadRequest(json.ToObject<MessageError>());
             }
-            return BadRequest("Invalid bank accounts or amount" );
+            return Ok();
         }
 
     }

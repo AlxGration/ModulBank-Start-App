@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth", "Auth\Auth.csproj", "{BE84D692-5A85-4652-B35B-FEDCFA0D6582}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication", "WebApplication\WebApplication.csproj", "{81B6B71D-8A5F-4F11-8828-FE68932D583B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkWithDatabase", "WorkWithDatabase\WorkWithDatabase.csproj", "{9281F881-3939-4909-8530-C88B50AE0376}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithDatabase", "WorkWithDatabase\WorkWithDatabase.csproj", "{9281F881-3939-4909-8530-C88B50AE0376}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BE84D692-5A85-4652-B35B-FEDCFA0D6582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE84D692-5A85-4652-B35B-FEDCFA0D6582}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE84D692-5A85-4652-B35B-FEDCFA0D6582}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE84D692-5A85-4652-B35B-FEDCFA0D6582}.Release|Any CPU.Build.0 = Release|Any CPU
 		{81B6B71D-8A5F-4F11-8828-FE68932D583B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{81B6B71D-8A5F-4F11-8828-FE68932D583B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81B6B71D-8A5F-4F11-8828-FE68932D583B}.Release|Any CPU.ActiveCfg = Release|Any CPU

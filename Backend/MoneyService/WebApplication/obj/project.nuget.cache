@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QNrvEO7scrMPgvvFp6YyqXPpzpCLAVBKfYc0WC2LH7ppHnw/fQdBAcGjZdXwSF+z/IzUnUBcEdg6nJDEWkNOsg==",
+  "dgSpecHash": "uq6Hzmmq9pBmitqkMvvgR6tWG2TBJM+fFJvMbvmnIryEr9W9i4wl80Qeo/b+RZVOY2KEoevk0qVaa0GDfVMpfA==",
   "success": true,
-  "projectFilePath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WebApplication\\WebApplication.csproj",
+  "projectFilePath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WebApplication\\WebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexg\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\alexg\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.3\\microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",

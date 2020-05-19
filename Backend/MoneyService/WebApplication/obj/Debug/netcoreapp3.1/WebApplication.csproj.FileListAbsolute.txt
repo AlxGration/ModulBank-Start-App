@@ -1,4 +1,3 @@
-C:\Users\alexg\source\repos\MoneyService\WebApplication\bin\Debug\netcoreapp3.1\Auth.dll
 C:\Users\alexg\source\repos\MoneyService\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.csprojAssemblyReference.cache
 C:\Users\alexg\source\repos\MoneyService\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.AssemblyInfoInputs.cache
 C:\Users\alexg\source\repos\MoneyService\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.AssemblyInfo.cs
@@ -20,7 +19,6 @@ C:\Users\alexg\source\repos\MoneyService\WebApplication\bin\Debug\netcoreapp3.1\
 C:\Users\alexg\source\repos\MoneyService\WebApplication\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\alexg\source\repos\MoneyService\WebApplication\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\alexg\source\repos\MoneyService\WebApplication\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\alexg\source\repos\MoneyService\WebApplication\bin\Debug\netcoreapp3.1\Auth.pdb
 C:\Users\alexg\source\repos\MoneyService\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.csproj.CopyComplete
 C:\Users\alexg\source\repos\MoneyService\WebApplication\obj\Debug\netcoreapp3.1\staticwebassets\WebApplication.StaticWebAssets.Manifest.cache
 C:\Users\alexg\source\repos\MoneyService\WebApplication\obj\Debug\netcoreapp3.1\staticwebassets\WebApplication.StaticWebAssets.xml

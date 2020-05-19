@@ -2062,19 +2062,6 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Auth/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "WorkWithDatabase": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Auth.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Auth.dll": {}
-        }
-      },
       "WorkWithDatabase/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -6903,11 +6890,6 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "Auth/1.0.0": {
-      "type": "project",
-      "path": "../Auth/Auth.csproj",
-      "msbuildProject": "../Auth/Auth.csproj"
-    },
     "WorkWithDatabase/1.0.0": {
       "type": "project",
       "path": "../WorkWithDatabase/WorkWithDatabase.csproj",
@@ -6916,7 +6898,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Auth >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.3",
       "Microsoft.EntityFrameworkCore >= 3.1.3",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.2",
@@ -6930,11 +6911,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WebApplication\\WebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WebApplication\\WebApplication.csproj",
       "projectName": "WebApplication",
-      "projectPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WebApplication\\WebApplication.csproj",
+      "projectPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WebApplication\\WebApplication.csproj",
       "packagesPath": "C:\\Users\\alexg\\.nuget\\packages\\",
-      "outputPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WebApplication\\obj\\",
+      "outputPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6953,11 +6934,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\Auth\\Auth.csproj": {
-              "projectPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\Auth\\Auth.csproj"
-            },
-            "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj": {
-              "projectPath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj"
+            "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj": {
+              "projectPath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+nsi1bmBvWWKq/R9djTf6okkXLdqC+yuwGZcvuY/mykiSgE6MfuET/bgBrobgT4DYlL9kTCMi3By2M85j+PsMw==",
+  "dgSpecHash": "FIUpjWAQ3tztzddDsSNoqr4ei1MMrejiDWgjaby4oEd6oXErfZiQlkNR6oP053NHqJsmYP1xWKHxZNdw5GytpQ==",
   "success": true,
-  "projectFilePath": "D:\\LocalGit\\GitHub\\ModuleBank Start App\\Backend\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj",
+  "projectFilePath": "C:\\Users\\alexg\\source\\repos\\MoneyService\\WorkWithDatabase\\WorkWithDatabase.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexg\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\alexg\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",

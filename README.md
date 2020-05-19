@@ -42,7 +42,7 @@
 
 >*TokenController*
 
- 1. **POST /login - аутентификация**
+ 2. **POST /login - аутентификация**
 	Обязательные параметры запроса:
 		
 		- email:    string
@@ -66,7 +66,7 @@
 	- "Email or password is incorrect"
 
 > BankOperationController
- 2. **POST /makedepo - пополнение счета**
+ 3. **POST /makedepo - пополнение счета**
 	
 	Обязательные параметры запроса:
 		

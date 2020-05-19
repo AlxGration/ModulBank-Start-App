@@ -13,8 +13,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
-using Auth;
 using WorkWithDatabase;
+using WebApplication.Services;
+using WebApplication.BusinessLogic;
+using WorkWithDatabase.Services.Inerfaces;
+using WorkWithDatabase.Services;
+using WebApplication.Services.Interfeces;
+using WebApplication.Models;
 
 namespace WebApplication
 {
@@ -30,8 +35,11 @@ namespace WebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IDatabaseService, DatabaseController>();
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IDbService, PostgreDbService>();
+            services.AddTransient<IBankOperationService, BankOperationService>();
+            services.AddScoped<AuthUserRequestHandler>();
+            services.AddScoped<BankOperationRequestHandler>();
 
             services.Configure<AuthOptions>(Configuration.GetSection("AuthOptions"));
 

@@ -1,0 +1,65 @@
+.header {
+    background-color: #254c99 ;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.header-container{
+    width: inherit;
+    height: inherit;
+    padding-left: 10%;
+    padding-right: 5%;   
+}
+  
+.main{
+    display: block;
+    background-color: #f8faff;
+}
+.left {
+    height: inherit;
+    line-height:3em;
+    float: left;
+}
+  
+.right {
+    float: right;
+}
+
+li{
+    vertical-align: middle;
+    display: inline-block;
+    padding-right:10px;
+}
+  
+ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+b{
+    color:#96d122 ;
+}
+.btn{
+    background-color: #254c99;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 5px;
+}
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: rgb(56, 94, 209);
+}
+
+.btn-settings{
+    background-image: url('./imgs/ic_settings.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.btn-logout{
+    background-image: url('./imgs/ic_logout.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+}

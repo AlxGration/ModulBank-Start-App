@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Баланс:"
+        android:textColor="@color/colorTint"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="48 p"
+        android:textSize="16sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_balance">
+
+        <Button
+            android:id="@+id/btn_make_depo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/quad_btn"
+            android:drawableTop="@drawable/ic_plus"
+            android:drawableTint="@color/small_button"
+            android:text="Пополнить"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_props"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/quad_btn"
+            android:drawableTop="@drawable/ic_props"
+            android:drawableTint="@color/small_button"
+            android:text="Реквизиты"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_statement"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/quad_btn"
+            android:drawableTop="@drawable/ic_statement"
+            android:drawableTint="@color/small_button"
+            android:text="Выписка"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_close_account"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/quad_btn"
+            android:drawableTop="@drawable/ic_close"
+            android:drawableTint="@color/small_button"
+            android:text="Закрыть"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="История операций:"
+        android:textColor="@color/colorTint"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

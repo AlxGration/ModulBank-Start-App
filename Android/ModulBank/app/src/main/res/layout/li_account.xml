@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <ImageView
+        android:id="@+id/img_ruble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_ruble"
+        android:padding="8dp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/txt_number"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:text="№ 4000000000"
+        android:gravity="center_vertical"
+        android:textSize="26sp"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@id/img_ruble"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/txt_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:text="4500.00"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@id/img_ruble"/>
+
+
+
+</RelativeLayout>

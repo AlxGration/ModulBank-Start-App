@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ModulBank</string>
+    <string name="login">Войти</string>
+    <string name="registration">Регистрация</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="password">Пароль</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="name">Имя</string>
+    <string name="title_activity_main">ModulBank</string>
+    <string name="title_home">Главная</string>
+    <string name="title_payments">Платежи и переводы</string>
+    <string name="title_chat">Чат</string>
+    <string name="logout">Выйти</string>
+    <string name="hello">Привет!</string>
+</resources>

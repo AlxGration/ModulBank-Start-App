@@ -14,7 +14,8 @@ const accounts = (state = initialState, action) => {
         case actions.GET_ACCOUNTS_REQUEST:
             console.log('GET_ACCOUNTS_REQUEST ');
             return{
-                ...state, responce,
+                ...state, 
+                responce,
                 loading: true,
             };
         case actions.GET_ACCOUNTS_SUCCESS:

@@ -1,6 +1,7 @@
 import {put, call, takeEvery} from 'redux-saga/effects';
 import {GET_ACCOUNTS_REQUEST, getAccountsSuccess, getAccountsError} from '../actions/accountsActions';
-import {fetchAccounts} from '../api/accountsApi';
+import {fetchAccounts} from '../../../api/accounts';
+
 
 export function* getAccounts(){
     try{

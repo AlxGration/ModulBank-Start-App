@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import {createStore, applyMiddleware} from "redux";
 import createSagaMiddleware from "redux-saga";
-import rootReducer from './modules/main/reducers/reducers';
-import rootSaga from './modules/main/sagas/sagas';
-import App from './modules/main/containers/App'
+import rootReducer from './reducers';
+import rootSaga from './sagas';
+import App from './modules/app/containers/App'
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));

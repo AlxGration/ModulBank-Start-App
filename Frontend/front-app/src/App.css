@@ -1,7 +1,14 @@
 .App {
   text-align: center;
 }
+html *
+{
+   font-family: "Gill Sans", sans-serif !important;
+}
 
+body{
+  margin:0px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,7 +21,35 @@
 }
 
 .error-message{
-  color: #aa3366; 
+  color: #fd8034; 
+  font-size: 12pt;
+}
+
+.center-block{
+  text-align: center;
+}
+
+.small-button{
+    width:70px;
+    height:25px;
+    margin-top:10px;
+    border-radius:10px;
+    background:#eee;
+    border:1px solid #ddd;
+    text-align:center;
+}
+.long-button{
+  width:160px;
+  height:25px;
+  margin-top:10px;
+  border-radius:10px;
+  background:#eee;
+  border:1px solid #ddd;
+  text-align:center;
+}
+
+.block{
+  padding: 20px;
 }
 
 .App-header {

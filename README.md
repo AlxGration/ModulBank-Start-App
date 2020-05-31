@@ -1,5 +1,6 @@
 
 
+
 # Проект для ModulBank Start!
 
 **Backend:** (.net core 3)
@@ -12,6 +13,9 @@
  - accounts modul - список счетов
  - main modul - главный модуль App
  *Информация об авторизованности хранится в localStorage браузера (+валидация токена на пригодность (expiration))
+
+**Android:** (kotlin, dagger 2, retrofit 2)
+ - 	скрины экранов в Android/screens
  
 # Текущее API
 
@@ -19,13 +23,17 @@
 
 [Аутентификация](#login)
 
+[Информация о себе](#me)
+<br>
 
 [Открыть новый счет](#newaccount)
 
 [Список счетов](#accounts)
 
+[Закрыть счет](#closeaccount)
+<br>
 
-[Пополнение_счета](#makedepo)
+[Пополнение счета](#makedepo)
 
 [Перевод между счетами](#maketransfer)
 
@@ -49,6 +57,7 @@
 	Ответ:
 
 		http 200 ОК
+		
 	Ограничения:
 	- Валидный email,
 	- Длина Username от 3-ех символов
@@ -72,15 +81,33 @@
 
 		{
 			"token": "eyJhbGci...",
-			"expiration": "2020-05-07T02:04:41Z"
+			"expiration": "2020-05-07T02:04:41Z",
+			"userId": "17f901b1-6bd5-4ebc-ac1d-1ce2dc866adb"
 		}
 		http 200 ОК
 	Возможные ответы:
 
 	- { errorMessage: "error cause" }
 
+ 3. **GET /<a name="me">me</a> - информация о себе**
+	Обязательные параметры запроса:
+		
+		- Bearer token
+		- ID in header
 
- 3. **POST /<a name="makedepo">makedepo</a> - пополнение счета**
+	Ответ:
+
+		{
+			"username": "Alex",
+			"status": 0,
+			"photo": "http://link"
+		}
+		http 200 ОК
+	Возможные ответы:
+
+	- { errorMessage: "error cause" }
+
+ 4. **POST /<a name="makedepo">makedepo</a> - пополнение счета**
 	
 	Обязательные параметры запроса:
 		
@@ -105,7 +132,7 @@
 
 	- { errorMessage: "error cause" }
 
- 4. **POST /<a name="maketransfer">maketransfer</a> - перевод между счетами**
+ 5. **POST /<a name="maketransfer">maketransfer</a> - перевод между счетами**
 	
 	Обязательные параметры запроса:
 		
@@ -123,6 +150,7 @@
 	Ответ:
 	
 		http 200 ОК
+		
 	Ограничения:
 	- формат номера счета "4ххххххххх" 
 	- сумма > 0
@@ -132,12 +160,12 @@
 
 	- { errorMessage: "error cause" }
 
- 5. **GET /<a name="accounts">accounts</a> - список открытых счетов**
+ 6. **GET /<a name="accounts">accounts</a> - список открытых счетов**
 	
 	Обязательные параметры запроса:
 		
 		Bearer Token
-		ID - айди пользователя в заголовке запроса
+		ID(пользователя) in header
 	
 	Ответ:
 			
@@ -156,12 +184,12 @@
 
 	- { errorMessage: "error cause" }
 
- 6. **GET /<a name="newaccount">newaccount</a> - создать новый счет**
+ 7. **GET /<a name="newaccount">newaccount</a> - создать новый счет**
 	
 	Обязательные параметры запроса:
 		
 		Bearer Token
-		ID - айди пользователя в заголовке запроса
+		ID(пользователя) in header
 	
 	Ответ:
 			
@@ -178,7 +206,24 @@
 
 	- { errorMessage: "error cause" }
 
+ 8. **GET /<a name="closeaccount">closeaccount</a> - закрыть счет**
+	
+	Обязательные параметры запроса:
+		
+		Bearer Token
+		ID(пользователя) in header
+		- number - номер счета
+	
+	Ответ:
+		
+		http 200 ОК
 
+Ограничения:
+	- на счете не должно быть средств
+	
+Возможные ответы:
+	- { errorMessage: "error cause" }
+	
 ## 
 	 Винов Александр
 

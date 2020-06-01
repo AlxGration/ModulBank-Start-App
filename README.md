@@ -1,6 +1,7 @@
 
 
 
+
 # Проект для ModulBank Start!
 
 **Backend:** (.net core 3)
@@ -37,8 +38,10 @@
 
 [Перевод между счетами](#maketransfer)
 
+[Список транзакций](#transactions)
 
-основной адрес: https://localhost:44314/api
+
+основной адрес: https://localhost:44314/api/
 
 
  1. **POST /<a name="registration">registration</a> - регистрация**
@@ -226,6 +229,35 @@
 	
 	- { errorMessage: "error cause" }
 	
+ 9. **GET /<a name="transactions">transactions</a> - список операций по счету**
+	
+	Обязательные параметры запроса:
+		
+		Bearer Token
+		ID(пользователя) in header
+		- number - номер счета
+	
+	Ответ:
+		
+		[
+			{
+				"id": 2,
+				"number": 4707095033,
+				"amount": 700.00,
+				"oper_date": "2020-06-01T00:00:00"
+			},
+			{
+				"id": 3,
+				"number": 4707095033,
+				"amount": -200.30,
+				"oper_date": "2020-06-01T00:00:00"
+			}
+		]
+		http 200 ОК
+
+	Возможные ответы:
+	
+	- { errorMessage: "error cause" }
+	
 ## 
 	 Винов Александр
-

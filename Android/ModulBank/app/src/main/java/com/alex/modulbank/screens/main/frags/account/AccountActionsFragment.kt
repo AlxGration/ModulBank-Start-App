@@ -50,6 +50,9 @@ class AccountActionsFragment : Fragment(){
         val btnMakeDepo = root.findViewById<Button>(R.id.btn_make_depo)
         btnMakeDepo.setOnClickListener{showMakeDepoDialog(root.context) }
 
+        val btnCloseAccount = root.findViewById<Button>(R.id.btn_close_account)
+        btnCloseAccount.setOnClickListener{ viewModel.closeAccount() }
+
         return root
     }
 
@@ -70,6 +73,9 @@ class AccountActionsFragment : Fragment(){
         (activity as MainActivity).showBottomNav()
     }
 
+
+    // Диалог с суммой пополнения
+    //
     private fun showMakeDepoDialog(ctx: Context){
         val etAmount = EditText(ctx)
         etAmount.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
@@ -106,5 +112,8 @@ class AccountActionsFragment : Fragment(){
 
     fun showError(error: String){
         Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
+    }
+    fun closeAccountSuccess(){
+        onDestroyView()
     }
 }

@@ -1,6 +1,5 @@
 package com.alex.modulbank.screens.main.frags.checking
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.alex.modulbank.R
 import com.alex.modulbank.di.BaseApplication
-import com.alex.modulbank.screens.login.LoginActivity
 import javax.inject.Inject
+
 
 class CheckUserFragment : Fragment() {
 
@@ -61,7 +60,6 @@ class CheckUserFragment : Fragment() {
         btnLogout.setOnClickListener{
             viewModel.logout()
         }
-
 
         viewModel.requestMyInfo()
 

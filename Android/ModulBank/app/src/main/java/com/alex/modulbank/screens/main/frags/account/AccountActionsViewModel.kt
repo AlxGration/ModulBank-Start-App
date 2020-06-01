@@ -7,6 +7,7 @@ import com.alex.modulbank.DTO.Account
 import com.alex.modulbank.DTO.BankTransaction
 import com.alex.modulbank.DTO.MessageError
 import com.alex.modulbank.api.IBankOperationsService
+import com.alex.modulbank.api.IUserService
 import com.google.gson.GsonBuilder
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -14,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.math.BigDecimal
 
-class AccountActionsViewModel (private val bankService: IBankOperationsService): ViewModel() {
+class AccountActionsViewModel (private val bankService: IBankOperationsService, private val userService: IUserService): ViewModel() {
 
     val account = MutableLiveData<Account>()
 
@@ -51,10 +52,9 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService):
                 } else {
                     if (response.body() != null)
                         requestFailed(gson.fromJson(response.body()!!.string(), MessageError::class.java))
-                    else requestFailed(MessageError("error"))
+                    else requestFailed(MessageError("Ошибка!"))
                 }
             }
-
             override  fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 Log.e("Error ", t.message!!)
                 requestFailed(MessageError( "Нет подключения к серверу" ))
@@ -62,4 +62,25 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService):
         })
     }
 
+    fun closeAccount(){
+        userService.closeAccount(account.value!!.number)
+            .enqueue(object : Callback<ResponseBody> {
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val gson = GsonBuilder().create()
+
+                if (response.isSuccessful) {
+                    view.closeAccountSuccess()
+                } else {
+                    if (response.body() != null)
+                        requestFailed(gson.fromJson(response.body()!!.string(), MessageError::class.java))
+                    else requestFailed(MessageError("Ошибка!"))
+                }
+            }
+            override  fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("Error ", t.message!!)
+                requestFailed(MessageError( "Нет подключения к серверу" ))
+            }
+        })
+    }
 }

@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_navigation_home_to_account_actions"
             app:destination="@id/navigation_account_actions"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -31,8 +35,7 @@
         android:id="@+id/navigation_check_in"
         android:name="com.alex.modulbank.screens.main.frags.checking.CheckUserFragment"
         android:label="Привет"
-        tools:layout="@layout/fragment_check_user" >
-    </fragment>
+        tools:layout="@layout/fragment_check_user" />
     <fragment
         android:id="@+id/navigation_account_actions"
         android:name="com.alex.modulbank.screens.main.frags.account.AccountActionsFragment"

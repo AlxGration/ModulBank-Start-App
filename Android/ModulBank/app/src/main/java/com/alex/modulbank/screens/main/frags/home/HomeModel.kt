@@ -45,7 +45,7 @@ class HomeModel (var userService: IUserService){
                 } else {
                     if (response.body() != null)
                         requestFailed(gson.fromJson(response.body()!!.string(), MessageError::class.java))
-                    else requestFailed(MessageError("error"))
+                    else requestFailed(MessageError("Ошибка!"))
                 }
             }
             override  fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -91,7 +91,7 @@ class HomeModel (var userService: IUserService){
                 } else {
                     if (response.body() != null)
                         requestFailed(gson.fromJson(response.body()!!.string(), MessageError::class.java))
-                    else requestFailed(MessageError("error"))
+                    else requestFailed(MessageError("Ошибка!"))
                 }
             }
             override  fun onFailure(call: Call<ResponseBody>, t: Throwable) {

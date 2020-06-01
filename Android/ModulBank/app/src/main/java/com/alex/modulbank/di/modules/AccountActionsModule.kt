@@ -14,7 +14,7 @@ class AccountActionsModule {
 
     @Provides
     @Singleton
-    fun provideCheckUserModel(service: IBankOperationsService): AccountActionsViewModel{
-        return AccountActionsViewModel(service)
+    fun provideCheckUserModel(bankService: IBankOperationsService, userService: IUserService): AccountActionsViewModel{
+        return AccountActionsViewModel(bankService, userService)
     }
 }

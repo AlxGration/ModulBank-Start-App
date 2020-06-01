@@ -80,7 +80,7 @@ open class CheckUserViewModel (private val service: IUserService, private val pr
                 } else {
                     if (response.body() != null)
                         requestMyInfoFailed(gson.fromJson(json, MessageError::class.java))
-                    else requestMyInfoFailed(MessageError("error"))
+                    else requestMyInfoFailed(MessageError("Ошибка!"))
                 }
             }
 

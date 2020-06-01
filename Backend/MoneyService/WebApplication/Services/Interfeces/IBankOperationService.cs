@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WorkWithDatabase.Models;
 
 namespace WebApplication.Services.Interfeces
 {
@@ -12,5 +13,6 @@ namespace WebApplication.Services.Interfeces
         public bool AccountHaveAmount(long number, decimal amount);
         public void MakeWithdrawal(long number, decimal amount);
         public bool HaveUserAccount(Guid userId, long number);
+        public List<TransactionOperation> GetTransactions(long number);
     }
 }

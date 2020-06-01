@@ -15,7 +15,7 @@ namespace WorkWithDatabase.Models
             Status = status;
         }
 
-        public UserModel(Guid id, string username, string email, string password, string salt, UserStatus status)
+        public UserModel(Guid id, string username, string email, string password, string salt, UserStatus status, string photo)
         {
             Id = id;
             Username = username;
@@ -23,6 +23,7 @@ namespace WorkWithDatabase.Models
             Password = password;
             Salt = salt;
             Status = status;
+            Photo = photo;
         }
 
         public Guid Id { get; set; }
@@ -31,5 +32,6 @@ namespace WorkWithDatabase.Models
         public string Password { get; set; }
         public string Salt { get; set; }
         public UserStatus Status { get; set; }
+        public string Photo { get; set; }
     }
 }

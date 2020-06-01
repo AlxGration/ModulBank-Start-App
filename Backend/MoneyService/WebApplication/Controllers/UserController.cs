@@ -75,10 +75,35 @@ namespace WebApplication.Controllers
             AccountModel account = json.ToObject<AccountModel>();          
             return Ok(account);
         }
-        /*
-        [Route("api/changeaccountstatus")]
+
+        [Route("api/me")]
+        [HttpGet]
+        public IActionResult GetUser()
+        {
+
+            var headers = Request.Headers;
+            Microsoft.Extensions.Primitives.StringValues userId;
+            if (headers.ContainsKey("ID"))
+            {
+                headers.TryGetValue("ID", out userId);
+            }
+            else
+            {
+                Unauthorized(new MessageError("No user ID in header"));
+            }
+
+            UserMe user = _userRequest.GetUser(new Guid(userId));
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return BadRequest(new MessageError("User is not found"));
+        }
+
+        
+        [Route("api/closeaccount")]
         [HttpPost]
-        public IActionResult ChangeAccountStatus()
+        public IActionResult ChangeAccountStatus(Account account)
         {
             var headers = Request.Headers;
             Microsoft.Extensions.Primitives.StringValues userId;
@@ -91,13 +116,14 @@ namespace WebApplication.Controllers
                 Unauthorized("No user ID in header");
             }
 
-            AccountModel account = _userRequest.AddAccount(new Guid(userId));
-            if (account != null)
+            JObject json = (JObject)JToken.FromObject(_userRequest.CloseAccount(new Guid(userId), account.Number));
+            if (json.ContainsKey("errorMessage"))
             {
-                return Ok(account);
+                return BadRequest(json.ToObject<MessageError>());
             }
-            return BadRequest("There is no such account");
+            
+            return Ok();    
         }
-        */
+
     }
 }

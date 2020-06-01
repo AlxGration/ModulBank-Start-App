@@ -16,5 +16,7 @@ namespace WorkWithDatabase.Services.Inerfaces
         AccountModel GetAccountByNumber(long number);
         List<AccountModel> GetAccountsByUserId(Guid userId);
         void UpdateAccount(AccountModel account);
+        void LogOperation(long number, decimal amount, DateTime date);
+        List<TransactionOperation> GetTransactions(long number);
     }
 }

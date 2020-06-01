@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using WebApplication.DTO;
 using WebApplication.Services.Interfeces;
+using WorkWithDatabase.Models;
 
 namespace WebApplication.BusinessLogic
 {
@@ -40,6 +42,13 @@ namespace WebApplication.BusinessLogic
                 return new { result = true };
             }
             return new MessageError( "The second account is invalid" );
+        }
+
+        public List<TransactionOperation> GetTransactions(Guid userId, long number)
+        {
+            if ( ! _bankService.HaveUserAccount(userId, number)) return null;
+
+            return _bankService.GetTransactions(number);
         }
 
         private bool IsValidOperation(long number, decimal amount, bool checkAccountAmount)

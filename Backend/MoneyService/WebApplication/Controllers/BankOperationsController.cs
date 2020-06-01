@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using WebApplication.DTO;
 using WebApplication.BusinessLogic;
 using Newtonsoft.Json.Linq;
+using WorkWithDatabase.Models;
 
 namespace WebApplication.Controllers
 {
@@ -27,8 +28,6 @@ namespace WebApplication.Controllers
         [HttpPost]
         public IActionResult MakeDeposit([FromBody]Transaction transaction)
         {
-            // положить на счет
-
             JObject json = (JObject)JToken.FromObject(_bankOperation.MakeDeposit(transaction));
             if (json.ContainsKey("errorMessage"))
             {
@@ -61,5 +60,24 @@ namespace WebApplication.Controllers
             return Ok();
         }
 
+
+        [Route("api/transactions")]
+        [HttpGet]
+        public IActionResult GetOperationsHistory([FromBody]Account account)
+        {
+            var headers = Request.Headers;
+            Microsoft.Extensions.Primitives.StringValues userId;
+            if (headers.ContainsKey("ID"))
+            {
+                headers.TryGetValue("ID", out userId);
+            }
+            else
+            {
+                Unauthorized(new MessageError("No user ID in header"));
+            }
+
+            List<TransactionOperation> transactions = _bankOperation.GetTransactions(new Guid(userId), account.Number);
+            return Ok(transactions);
+        }
     }
 }

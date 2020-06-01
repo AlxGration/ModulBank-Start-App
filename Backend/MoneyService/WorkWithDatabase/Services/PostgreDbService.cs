@@ -34,7 +34,8 @@ namespace WorkWithDatabase.Services
                               email TEXT NOT NULL,
                               password TEXT NOT null,
                               salt TEXT NOT NULL,
-                              status INT NOT NULL
+                              status INT NOT NULL,
+                              photo TEXT
                             );
                             CREATE TABLE IF NOT EXISTS accounts (
                               id uuid PRIMARY KEY UNIQUE,
@@ -43,6 +44,12 @@ namespace WorkWithDatabase.Services
                               number BIGINT NOT NULL UNIQUE,
                               amount MONEY NOT NULL,
                               status INT NOT NULL
+                            );
+                            CREATE TABLE IF NOT EXISTS operations(
+                              id SERIAL PRIMARY KEY,
+                              number BIGINT,
+                              amount MONEY,
+                              oper_date DATE
                             );"
                 );
             }
@@ -73,7 +80,7 @@ namespace WorkWithDatabase.Services
             {
                 conn.Open();
 
-                conn.Execute("INSERT INTO users (id, username, email, password, salt, status) VALUES(@id, @username, @email, @password, @salt, @status);",
+                conn.Execute("INSERT INTO users (id, username, email, password, salt, status, photo) VALUES(@id, @username, @email, @password, @salt, @status, @photo);",
                     new
                     {
                         id = user.Id,
@@ -81,7 +88,8 @@ namespace WorkWithDatabase.Services
                         email = user.Email,
                         password = user.Password,
                         salt = user.Salt,
-                        status = user.Status
+                        status = user.Status,
+                        photo = user.Photo
                     }); 
             }
         }
@@ -92,7 +100,7 @@ namespace WorkWithDatabase.Services
             {
                 conn.Open();
 
-                var result = conn.QuerySingleOrDefault<UserModel>("SELECT id, username, email, password, salt, status FROM users WHERE id = @id;",
+                var result = conn.QuerySingleOrDefault<UserModel>("SELECT id, username, email, password, salt, status, photo FROM users WHERE id = @id;",
                     new
                     {
                         id,
@@ -144,7 +152,7 @@ namespace WorkWithDatabase.Services
             {
                 conn.Open();
 
-                var result = conn.QuerySingleOrDefault<UserModel>("SELECT id, username, email, password, salt, status FROM users WHERE email = @email;",
+                var result = conn.QuerySingleOrDefault<UserModel>("SELECT id, username, email, password, salt, status, photo FROM users WHERE email = @email;",
                     new
                     {
                         email,
@@ -177,7 +185,7 @@ namespace WorkWithDatabase.Services
           {
               conn.Open();
 
-              conn.Execute("UPDATE users SET username = @username, email = @email, password = @password, salt = @salt, status = status WHERE id = @id;",
+              conn.Execute("UPDATE users SET username = @username, email = @email, password = @password, salt = @salt, status = @status, photo = @photo WHERE id = @id;",
                   new
                   {
                       id = user.Id,
@@ -185,7 +193,8 @@ namespace WorkWithDatabase.Services
                       email = user.Email,
                       password = user.Password,
                       salt = user.Salt,
-                      status = user.Status
+                      status = user.Status,
+                      photo = user.Photo
                   });
           }
     }
@@ -219,6 +228,39 @@ namespace WorkWithDatabase.Services
                     });
 
                 return result;
+            }
+        }
+
+        public List<TransactionOperation> GetTransactions(long number)
+        {
+            using (var conn = CreateConnection())
+            {
+                conn.Open();
+
+                var result = conn.Query<TransactionOperation>("SELECT id, number, amount, oper_date FROM operations WHERE number = @number;",
+                    new
+                    {
+                        number,
+                    });
+
+                return result.ToList();
+            }
+        }
+
+        public void LogOperation(long number, decimal amount, DateTime date)
+        {
+            using (var conn = CreateConnection())
+            {
+                conn.Open();
+                //SELECT * FROM OPERATIONS WHERE OPER_DATEoper_date >= '2020-06-00' AND OPER_DATE <= '2020-06-30'
+                //INSERT INTO operations (number, amount, oper_date) VALUES(4500000005, 23000, '2020-06-26');
+                conn.Execute("INSERT INTO operations (number, amount, oper_date) VALUES(@number, @amount, @date);",
+                    new
+                    {
+                        number,
+                        amount,
+                        date
+                    });
             }
         }
     }

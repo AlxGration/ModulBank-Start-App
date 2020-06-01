@@ -23,7 +23,7 @@ namespace WebApplication.BusinessLogic
             return _service.GetAccounts(userId);
         }
 
-        public Object AddAccount(Guid userId)
+        public object AddAccount(Guid userId)
         {
             if (!_service.IsUserVerifyed(userId)) return new MessageError("Non verified users can not create account");
 
@@ -43,6 +43,25 @@ namespace WebApplication.BusinessLogic
             }
 
             return _service.AddAccount(id, userId, number);
+        }
+
+        public UserMe GetUser(Guid id)
+        {
+            UserModel user = _service.GetUser(id);
+            return new UserMe(user.Username, user.Photo, user.Status);
+        }
+
+        public object CloseAccount(Guid userId, long number)
+        {
+            if (!_service.IsUserVerifyed(userId)) return new MessageError("Non verified users have not accounts");
+
+            if (!_service.HaveUserAccount(userId, number)) return new MessageError("No accsess to this account");
+
+            if (!_service.IsAccountBalanceEmpty(number)) return new MessageError("Transfer money before closing account");
+
+            _service.CloseAccount(number);
+
+            return new { result = true };
         }
 
     }

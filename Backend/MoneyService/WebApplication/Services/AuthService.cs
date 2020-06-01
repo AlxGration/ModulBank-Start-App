@@ -44,7 +44,7 @@ namespace WebApplication.Services
         {
             User usr = new User(email, password);// хеширование 
             // и запись в БД
-            _dbService.AddUser(new UserModel(id, username, usr.Username, usr.Password, usr.Salt, UserStatus.UNVERIFIED));
+            _dbService.AddUser(new UserModel(id, username, usr.Username, usr.Password, usr.Salt, UserStatus.UNVERIFIED, ""));
         }
 
         public Ttoken Token(UserCredentials user)

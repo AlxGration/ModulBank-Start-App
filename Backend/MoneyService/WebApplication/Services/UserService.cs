@@ -43,6 +43,11 @@ namespace WebApplication.Services
             return _dbService.GetAccountsByUserId(userId);
         }
 
+        public UserModel GetUser(Guid id)
+        {
+            return _dbService.GetUser(id);
+        }
+
         public bool IsAccountExist(long number)
         {
             return null != _dbService.GetAccountByNumber(number);
@@ -57,6 +62,26 @@ namespace WebApplication.Services
         {
             UserModel user = _dbService.GetUser(userId);
             return user != null && user.Status == UserStatus.VERIFIED;
+        }
+
+        public void CloseAccount(Guid userId, Guid accountId)
+        {
+            AccountModel account = _dbService.GetAccount(accountId);
+            account.Status = AccountStatus.CLOSED;
+            _dbService.UpdateAccount(account);
+        }
+
+        public bool HaveUserAccount(Guid userId, long number)
+        {
+            // checking accaount access for userId
+            AccountModel account = _dbService.GetAccountByNumber(number);
+            return account != null && account.User_id.Equals(userId);
+        }
+
+        public bool IsAccountBalanceEmpty(long number)
+        {
+            AccountModel account = _dbService.GetAccountByNumber(number);
+            return account.Amount == 0;
         }
     }
 }

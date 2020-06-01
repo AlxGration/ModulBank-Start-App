@@ -43,6 +43,8 @@ namespace WebApplication.Services
 
         public void MakeDeposit(long number, decimal amount)
         {
+            _dbService.LogOperation(number, amount, DateTime.Now);
+
             var account = _dbService.GetAccountByNumber(number);
             account.Amount += amount;
             _dbService.UpdateAccount(account);
@@ -50,9 +52,16 @@ namespace WebApplication.Services
 
         public void MakeWithdrawal(long number, decimal amount)
         {
+            _dbService.LogOperation(number, -amount, DateTime.Now);
+
             var account = _dbService.GetAccountByNumber(number);
             account.Amount -= amount;
             _dbService.UpdateAccount(account);
+        }
+
+        public List<TransactionOperation> GetTransactions(long number)
+        {
+            return _dbService.GetTransactions(number);
         }
     }
 }

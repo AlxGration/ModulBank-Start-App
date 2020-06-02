@@ -17,6 +17,7 @@ import javax.inject.Singleton
 class AppModule {
 
     private val API_URL = "https://198.168.0.108/"
+    //private val API_URL = "https://usatu-pro-dating.000webhostapp.com/"
 
     @Provides
     @Singleton

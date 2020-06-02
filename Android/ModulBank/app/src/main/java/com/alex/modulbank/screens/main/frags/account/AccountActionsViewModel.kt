@@ -6,18 +6,25 @@ import androidx.lifecycle.ViewModel
 import com.alex.modulbank.DTO.Account
 import com.alex.modulbank.DTO.BankTransaction
 import com.alex.modulbank.DTO.MessageError
+import com.alex.modulbank.DTO.TransactionOperation
 import com.alex.modulbank.api.IBankOperationsService
 import com.alex.modulbank.api.IUserService
 import com.google.gson.GsonBuilder
 import okhttp3.ResponseBody
+import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.math.BigDecimal
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AccountActionsViewModel (private val bankService: IBankOperationsService, private val userService: IUserService): ViewModel() {
 
     val account = MutableLiveData<Account>()
+    val loadingProcess = MutableLiveData<Boolean>()
+    val transactionsList = MutableLiveData<ArrayList<TransactionOperation>>()
 
     private var lastOperationAmount: Double = 0.0
     private lateinit var view: AccountActionsFragment
@@ -28,6 +35,7 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
     }
 
     fun requestFailed(messageError: MessageError){
+        loadingProcess.postValue(false)
         view.showError(messageError.errorMessage)
     }
 
@@ -35,6 +43,7 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
         if (txtAmount.isEmpty()) return
         if (account.value == null) return
 
+        loadingProcess.postValue(true)
         lastOperationAmount = txtAmount.toDouble()
 
         bankService.makeDepo(
@@ -49,6 +58,10 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
                 if (response.isSuccessful) {
                     if (account.value != null)
                         account.value = account.value?.also{ it-> it.amount += lastOperationAmount}
+                    loadingProcess.postValue(false)
+                    addTransactionToList(
+                        TransactionOperation(-1, -1, BigDecimal(lastOperationAmount), Date())
+                    )
                 } else {
                     if (response.body() != null)
                         requestFailed(gson.fromJson(response.body()!!.string(), MessageError::class.java))
@@ -63,6 +76,8 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
     }
 
     fun closeAccount(){
+        loadingProcess.postValue(true)
+
         userService.closeAccount(account.value!!.number)
             .enqueue(object : Callback<ResponseBody> {
 
@@ -70,6 +85,7 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
                 val gson = GsonBuilder().create()
 
                 if (response.isSuccessful) {
+                    loadingProcess.postValue(false)
                     view.closeAccountSuccess()
                 } else {
                     if (response.body() != null)
@@ -82,5 +98,55 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
                 requestFailed(MessageError( "Нет подключения к серверу" ))
             }
         })
+    }
+
+    fun transactionsListRequest(){
+        loadingProcess.postValue(true)
+
+        val call: Call<ResponseBody> = bankService.transactionsList(account.value!!.number)
+        call.enqueue(object : Callback<ResponseBody> {
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val json = response.body()!!.string()
+                val gson = GsonBuilder().create()
+
+                if (response.isSuccessful) {
+                    loadingProcess.postValue(false)
+                    transactionsList.value = toList(json)
+                } else {
+                    if (response.body() != null)
+                        requestFailed(gson.fromJson(json, MessageError::class.java))
+                    else requestFailed(MessageError("Ошибка!"))
+                }
+            }
+            override  fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.e("Error ", t.message!!)
+                requestFailed(MessageError( "Нет подключения к серверу" ))
+            }
+        })
+    }
+
+    fun toList(json: String): ArrayList<TransactionOperation> {
+        Log.e("TAG", "json array : "+json)
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val array = JSONArray(json)
+        val transactions = ArrayList<TransactionOperation>(array.length())
+        for (i in 0 until array.length()) {
+            val item = array.getJSONObject(i)
+            transactions.add(
+                TransactionOperation(
+                    item.getInt("id"),
+                    item.getLong("number"),
+                    BigDecimal(item.getLong("amount")),
+                    sdf.parse(item.getString("oper_date"))
+                )
+            )
+        }
+        return transactions
+    }
+
+    private fun addTransactionToList(tr: TransactionOperation){
+
     }
 }

@@ -33,8 +33,8 @@ class HomeModel (var userService: IUserService){
     fun getAccounts(){
 
         val call: Call<ResponseBody> = userService.accounts()
-
         call.enqueue(object : Callback<ResponseBody> {
+
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 val gson = GsonBuilder().create()
 

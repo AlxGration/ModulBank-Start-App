@@ -19,7 +19,7 @@ class PrefsManager(private val context:Context) {
 
         if (sp.getString("token", "") == "") return false
 //"2020-05-07T02:04:41Z"
-        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val dateExp: Date = sdf.parse(sp.getString("expiration", ""))
         val dateToday = Date()
 

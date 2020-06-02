@@ -8,16 +8,14 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.alex.modulbank.DTO.Account
 import com.alex.modulbank.R
 import com.alex.modulbank.di.BaseApplication
+import com.alex.modulbank.models.AdapterTransactionsList
 import com.alex.modulbank.screens.main.MainActivity
 import javax.inject.Inject
 
@@ -52,6 +50,25 @@ class AccountActionsFragment : Fragment(){
 
         val btnCloseAccount = root.findViewById<Button>(R.id.btn_close_account)
         btnCloseAccount.setOnClickListener{ viewModel.closeAccount() }
+
+        // ProgressBar init
+        val pBar = root.findViewById<ProgressBar>(R.id.progress_bar)
+        viewModel.loadingProcess.observe(this, Observer {
+            pBar.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
+
+        // Список транзакций
+        //
+        val lvTransactions = root.findViewById<ListView>(R.id.lv_transactions)
+        val adapter = AdapterTransactionsList(root.context, ArrayList(0))
+        viewModel.transactionsList.observe(this, Observer {
+            adapter.clear()
+            adapter.addAll(it)
+        })
+        lvTransactions.adapter = adapter
+
+        viewModel.transactionsListRequest()
 
         return root
     }

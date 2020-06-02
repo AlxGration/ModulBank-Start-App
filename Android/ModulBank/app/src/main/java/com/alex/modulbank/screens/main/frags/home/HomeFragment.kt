@@ -37,14 +37,14 @@ class HomeFragment : Fragment(){
         // Дата
         //
         val sdf = SimpleDateFormat.getDateInstance(DateFormat.LONG)
-        val txtTodayDate = root!!.findViewById<TextView>(R.id.txt_date)
+        val txtTodayDate = root.findViewById<TextView>(R.id.txt_date)
         txtTodayDate.text = sdf.format(Date())
 
 
         // Список Счетов
         //
-        val accountsListView = root!!.findViewById<ListView>(R.id.lv_accounts)
-        val adapter = AdapterAccountList(root!!.context, ArrayList(0))
+        val accountsListView = root.findViewById<ListView>(R.id.lv_accounts)
+        val adapter = AdapterAccountList(root.context, ArrayList(0))
         homeViewModel.accounts.observe(this, Observer {
             adapter.clear()
             adapter.addAll(it)
@@ -52,7 +52,7 @@ class HomeFragment : Fragment(){
         accountsListView.adapter = adapter
 
 
-        //переход на фрагмет с операциями над счетом
+        // Переход на фрагмет с операциями над счетом
         //
         accountsListView.setOnItemClickListener{parent, view, position, id ->
             val item = adapter.getItem(position)
@@ -64,38 +64,37 @@ class HomeFragment : Fragment(){
         }
 
 
-        //Добавить счет
+        // Добавить счет
         //
-        val btnNewAccount = root!!.findViewById<Button>(R.id.btn_new_account)
+        val btnNewAccount = root.findViewById<Button>(R.id.btn_new_account)
         btnNewAccount.setOnClickListener{
             homeViewModel.newAccount()
         }
 
 
-        //ProgressBar init
+        // ProgressBar init
         //
-        val pBar = root!!.findViewById<ProgressBar>(R.id.progress_bar)
+        val pBar = root.findViewById<ProgressBar>(R.id.progress_bar)
         homeViewModel.loadingBar.observe(this, Observer {
-            if (it) pBar.visibility = View.VISIBLE
-            else pBar.visibility = View.INVISIBLE
+            pBar.visibility = if (it) View.VISIBLE else View.GONE
         })
 
 
-        //Обновить\загрузить список счетов
+        // Обновить\загрузить список счетов
         //
         homeViewModel.init()
         homeViewModel.accountsListRequest()
 
 
-        //открыть настройки
+        // Открыть настройки
         //
-        val btnSettings = root!!.findViewById<ImageButton>(R.id.img_settings)
+        val btnSettings = root.findViewById<ImageButton>(R.id.img_settings)
         btnSettings.setOnClickListener{
-            startActivity(Intent(root!!.context, UserSettingsActivity::class.java))
+            startActivity(Intent(root.context, UserSettingsActivity::class.java))
         }
 
 
-        // показ ожибки
+        // Показ ошибки
         //
         homeViewModel.errorMessage.observe(this, Observer {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()

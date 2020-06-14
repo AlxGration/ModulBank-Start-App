@@ -34,7 +34,6 @@ class AccountActionsFragment : Fragment(){
 
         BaseApplication.appComponent.inject(this@AccountActionsFragment)
         val root = inflater.inflate(R.layout.fragment_account_actions, container, false)
-        viewModel.attachView(this)
 
         viewModel.account.value = arguments!!.getSerializable("account") as Account
 
@@ -57,7 +56,6 @@ class AccountActionsFragment : Fragment(){
             pBar.visibility = if (it) View.VISIBLE else View.GONE
         })
 
-
         // Список транзакций
         //
         val lvTransactions = root.findViewById<ListView>(R.id.lv_transactions)
@@ -67,6 +65,21 @@ class AccountActionsFragment : Fragment(){
             adapter.addAll(it)
         })
         lvTransactions.adapter = adapter
+
+        // слушатель ошибки
+        //
+        viewModel.errorText.observe(this, Observer {
+            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+        })
+
+        // закрытие аккаунта
+        //
+        viewModel.closeAccountSuccess.observe(this, Observer {
+            if (it){
+                viewModel.closeAccountSuccess.value = false
+                onDestroyView()
+            }
+        })
 
         viewModel.transactionsListRequest()
 
@@ -125,12 +138,5 @@ class AccountActionsFragment : Fragment(){
         }
         makeDepoDialog.setNegativeButton("Потом") { _,_->}
         makeDepoDialog.show()
-    }
-
-    fun showError(error: String){
-        Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
-    }
-    fun closeAccountSuccess(){
-        onDestroyView()
     }
 }

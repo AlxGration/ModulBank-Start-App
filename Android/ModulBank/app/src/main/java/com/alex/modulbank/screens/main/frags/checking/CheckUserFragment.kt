@@ -31,8 +31,6 @@ class CheckUserFragment : Fragment() {
     ): View? {
 
         BaseApplication.appComponent.inject(this)
-        viewModel.attachView(this)
-
         val root = inflater.inflate(R.layout.fragment_check_user, container, false)
 
 

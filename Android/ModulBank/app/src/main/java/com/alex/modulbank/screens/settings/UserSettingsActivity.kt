@@ -31,9 +31,11 @@ class UserSettingsActivity : AppCompatActivity() {
         tvName = findViewById(R.id.tv_name)
         tvEmail = findViewById(R.id.tv_email)
         tvStatus = findViewById(R.id.tv_status)
+    }
 
-
-        presenter.attachView(this)
+    override fun onStart() {
+        super.onStart()
+        presenter.attach(this)
         presenter.init()
     }
 
@@ -50,5 +52,10 @@ class UserSettingsActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.detach()
     }
 }

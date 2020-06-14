@@ -31,10 +31,6 @@ class LoginActivity : AppCompatActivity(), LoginScreenContract.IView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loginPresenter.attach(this)
-        loginPresenter.init()
-
-
         tvError = findViewById(R.id.txt_error)
         etEmail = findViewById(R.id.et_email)
         etPass = findViewById(R.id.et_password)
@@ -42,6 +38,11 @@ class LoginActivity : AppCompatActivity(), LoginScreenContract.IView {
         btnLogin = findViewById(R.id.btn_login)
     }
 
+    override fun onStart() {
+        super.onStart()
+        loginPresenter.attach(this)
+        loginPresenter.init()
+    }
 
     fun onClickLogin(view: View) {
         tvError.text = ""

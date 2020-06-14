@@ -33,9 +33,6 @@ class RegistrationActivity : AppCompatActivity(), RegistrationScreenContract.IVi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
-        regPresenter.attach(this)
-        regPresenter.init()
-
         etUsername = findViewById(R.id.et_username)
         etEmail = findViewById(R.id.et_email)
         etPass1 = findViewById(R.id.et_password)
@@ -49,6 +46,12 @@ class RegistrationActivity : AppCompatActivity(), RegistrationScreenContract.IVi
         if (email != null) {
             etEmail.setText(email)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        regPresenter.attach(this)
+        regPresenter.init()
     }
 
     fun onClickConfirm(view: View) {

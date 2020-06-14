@@ -17,11 +17,6 @@ import retrofit2.Response
 
 open class CheckUserViewModel (private val service: IUserService, private val prefs:PrefsManager): ViewModel() {
 
-    private lateinit var view: CheckUserFragment
-    fun attachView(view: CheckUserFragment){
-        this.view=view
-    }
-
     //внешние, для MainActivity, чтобы обработать переходы м-у фрагментами
     //
     val userChecked = MutableLiveData<Boolean>().apply { value = false }

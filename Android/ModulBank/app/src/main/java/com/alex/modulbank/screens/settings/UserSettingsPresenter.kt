@@ -1,21 +1,16 @@
 package com.alex.modulbank.screens.settings
 
 import com.alex.modulbank.models.PrefsManager
+import com.alex.modulbank.screens.BasePresenter
 
-class UserSettingsPresenter(private val prefs: PrefsManager) {
-
-    private lateinit var view: UserSettingsActivity
-
-    fun attachView(view: UserSettingsActivity){
-        this.view = view
-    }
+class UserSettingsPresenter(private val prefs: PrefsManager):  BasePresenter<UserSettingsActivity>()  {
 
     fun init(){
         val userData = prefs.getUserInfo()
         if (userData!= null){
-            view.setName(userData.username)
-            view.setEmail(userData.email)
-            view.setStatus(userData.status.name)
+            view?.setName(userData.username)
+            view?.setEmail(userData.email)
+            view?.setStatus(userData.status.name)
             //TODO: download image
         }
     }
@@ -34,7 +29,7 @@ class UserSettingsPresenter(private val prefs: PrefsManager) {
 
     fun logout(){
         prefs.clearAuthData()
-        view.logout()
+        view?.logout()
     }
 
 }

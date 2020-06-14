@@ -25,18 +25,15 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
     val account = MutableLiveData<Account>()
     val loadingProcess = MutableLiveData<Boolean>()
     val transactionsList = MutableLiveData<ArrayList<TransactionOperation>>()
+    val errorText = MutableLiveData<String>()
+    val closeAccountSuccess = MutableLiveData<Boolean>()
 
     private var lastOperationAmount: Double = 0.0
-    private lateinit var view: AccountActionsFragment
 
-
-    fun attachView(view: AccountActionsFragment){
-        this.view = view
-    }
 
     fun requestFailed(messageError: MessageError){
         loadingProcess.postValue(false)
-        view.showError(messageError.errorMessage)
+        errorText.postValue(messageError.errorMessage)
     }
 
     fun makeDeposit(txtAmount: String){
@@ -86,7 +83,7 @@ class AccountActionsViewModel (private val bankService: IBankOperationsService, 
 
                 if (response.isSuccessful) {
                     loadingProcess.postValue(false)
-                    view.closeAccountSuccess()
+                    closeAccountSuccess.postValue(true)
                 } else {
                     if (response.body() != null)
                         requestFailed(gson.fromJson(response.body()!!.string(), MessageError::class.java))

@@ -4,6 +4,8 @@
 
 # Проект для ModulBank Start!
 
+![one](Android/screens/full.png)
+
 **Backend:** (.net core 3)
  - 	WebApplication - АПИ	
  - 	WorkWithDatabase - работа с БД
